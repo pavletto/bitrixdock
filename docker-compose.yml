@@ -3,7 +3,6 @@ version: '2'
 services:
     php:
         build: ./${PHP_VERSION}
-        container_name: php
         volumes_from:
             - source
         ports:
@@ -16,7 +15,6 @@ services:
         restart: always
     web_server:
         build: ./${WEB_SERVER_TYPE}
-        container_name: webserver
         depends_on:
             - source
         volumes_from:
@@ -31,7 +29,6 @@ services:
         restart: always
     mysql:
         build: ./mysql
-        container_name: mysql
         volumes_from:
             - source
         ports:
@@ -46,7 +43,6 @@ services:
         restart: always
     memcached:
         image: memcached:1.5-alpine
-        container_name: memcached
         volumes_from:
             - source
         ports:
@@ -56,7 +52,6 @@ services:
         restart: always
     source:
         image: alpine:latest
-        container_name: source
         volumes:
             - ./logs/${WEB_SERVER_TYPE}:/var/log/${WEB_SERVER_TYPE}
             - ./logs/php:/var/log/php
