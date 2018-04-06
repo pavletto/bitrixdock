@@ -32,6 +32,8 @@ before_install:
 
   # Setup your application stack. You may need to tweak these commands if you
   # doing out-of-the-ordinary docker-compose builds.
+  - sudo service mysql stop
+  - sudo service memcached stop
   - docker-compose pull
   - docker-compose build
   - docker-compose up -d
@@ -45,5 +47,5 @@ before_install:
   # we need. You should remove this if it's not necessary or you have other
   # scripts handling this.
 script:
-    - tests.sh
+    - bash tests.sh
   # - docker/web/provision.sh
