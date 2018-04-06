@@ -28,7 +28,7 @@ before_install:
   # Check that docker-compose is now running the latest version (or at least the
   # one we specified). This is not to be confused with the version we printed
   # before doing the update.
-  - docker-compose --version
+  # - docker-compose --version
 
   # Setup your application stack. You may need to tweak these commands if you
   # doing out-of-the-ordinary docker-compose builds.
@@ -44,4 +44,6 @@ before_install:
   # This is just our script to setup all the database tables and other fixtures
   # we need. You should remove this if it's not necessary or you have other
   # scripts handling this.
+script:
+    - tests.sh
   # - docker/web/provision.sh
